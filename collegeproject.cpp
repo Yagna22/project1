@@ -16,8 +16,6 @@ class times
 	times()
 	{
 	    ofstream f;
-	    
-	    
 	    while(n!=4){
 	int days = 0, m1 = 0, years = 0, m2 = 0, months = 0,y1 = 0;
 	cout << endl <<"Choose you number as per options"<<endl;
@@ -79,18 +77,18 @@ class times
     	if(n==3){
     	     cout << "\n approximately :"<< days<<"days left";   
     	}
-    	f.open("projectc++.txt");
-	f<<"welcome!";
+    	f.open("projectc++.txt",ios::ate|ios::out|ios::in);
+	
 	if(n==1){
 		f<<"\nNumber of days lived : ";
 		f<<days<<" days";
 	}
 	if(n==2){
-		f<<"Diffrence of age\n";
+		f<<"\nDiffrence of age\n";
 		f<<"elder person is : "<<days<<" older";
 	}
 	if(n==3){
-		f<<"Next birthday!\n"<<"approximately : "<<days<<" left for your next birthday";
+		f<<"\nNext birthday!\n"<<"approximately : "<<days<<" left for your next birthday";
 	}
 	}
 	f.close();
