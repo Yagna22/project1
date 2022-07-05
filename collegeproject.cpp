@@ -10,13 +10,16 @@ class times
 	int tdd,tmm,tyy,n;
 	int dd, mm , yy;
 	
-	const int mdays[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+	const int mdays[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 }; //array with every month
 	public:
-
+	
+	
 	times()
 	{
-	    ofstream f;
-	    while(n!=4){
+	ofstream fa;   //ofstream file to only write in the file
+    fa.open("projectc++.txt",ios::trunc|ios::ate|ios::out|ios::in); //opening the file
+	    
+	    while(n!=4){  //exit if 4
 	int days = 0, m1 = 0, years = 0, m2 = 0, months = 0,y1 = 0;
 	cout << endl <<"Choose you number as per options"<<endl;
     cout << "1 - Number of days lived"<<endl;
@@ -25,17 +28,17 @@ class times
     cout << "4 - Exit"<<endl;
 	cin >> n;
 	
-	    if(n==1){
+	    if(n==1){     //case 1
 	cout << "Today's Date : ";
 	cin >> tdd >> tmm >> tyy;
 	cout << endl <<"Your birthdate : ";
 	cin >> dd >> mm >> yy;}
-	if(n==2){
+	if(n==2){    //case 2
 	cout << "younger person : ";
 	cin >> tdd >> tmm >> tyy;
 	cout << endl <<"elder person birthdate : ";
 	cin >> dd >> mm >> yy;}
-	if(n==3){
+	if(n==3){  //case 3
 	    cout << "your birthdate dd/mm :";
 	cin >> tdd >> tmm;
 	cout << "the year you want to see in :";
@@ -43,31 +46,31 @@ class times
 	cout << endl <<"Today's date : ";
 	cin >> dd >> mm >> yy;
 	}
-	years = tyy - yy;
+	years = tyy - yy;          //finding difference in years
 
 	
-	while(tmm > 0){
+	while(tmm > 0){  //converting years and months in days
 	    tmm--;
 		m1 =  mdays[tmm] + m1;
 		
 	}
-	while(mm > 0){
+	while(mm > 0){  //converting years and months in days
 	    mm--;
 		m2 =  mdays[mm] + m2;
 		
 	}
-	months = m1 - m2;
+	months = m1 - m2; // finding difference in months
 	
 	
     
       y1 = years;
-    while(years>3)
+    while(years>3)  //finding minimum no. of leap year and adding a day for every leap year
     {
         years = years - 4;
         days++;
     }
        
-    	days = (tdd - dd)  + (y1*365) + (months);
+    	days = (tdd - dd)  + (y1*365) + (months); 
     	if(n==1){
         cout << "\nNumber of days lived (approximately) :"<< days<<"  DAYS"<< endl;
     	}
@@ -77,21 +80,23 @@ class times
     	if(n==3){
     	     cout << "\n approximately :"<< days<<"days left";   
     	}
-    	f.open("projectc++.txt",ios::ate|ios::out|ios::in);
-	
+    
 	if(n==1){
-		f<<"\nNumber of days lived : ";
-		f<<days<<" days";
+		fa<<"\nCase "<<n;
+		fa<<"\nNumber of days lived : ";
+		fa<<days<<" days";
 	}
 	if(n==2){
-		f<<"\nDiffrence of age\n";
-		f<<"elder person is : "<<days<<" older";
+		fa<<"\nCase "<<n;
+		fa<<"\nDiffrence of age\n";
+		fa<<"elder person is : "<<days<<" older";
 	}
 	if(n==3){
-		f<<"\nNext birthday!\n"<<"approximately : "<<days<<" left for your next birthday";
+		fa<<"\nCase "<<n;
+		fa<<"\nNext birthday!\n"<<"approximately : "<<days<<" left for your next birthday";
 	}
 	}
-	f.close();
+	fa.close();
 	}
 	
 	
